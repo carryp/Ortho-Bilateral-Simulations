@@ -1,10 +1,11 @@
 # Load necessary libraries
-install.packages('tidyverse')
-install.packages('data.table')
-install.packages('nlme') # For linear mixed models
-library(tidyverse)
-library(data.table)
-library(nlme)
+list.of.packages <- c("tidyverse", "data.table", "nlme")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)  # Loads in packages if not already installed
+
+require(tidyverse)
+require(data.table)
+require(nlme)    # Require throws a warning rather than error library() will throw
 
 # Define the number of bilateral observations for each iteration
 N.Bilateral.List = as.matrix(
@@ -208,11 +209,11 @@ for(j in 1:nrow(N.Bilateral.List)){
     # Save the results to files
     saveRDS(
       object = Simulation.Output.Data, 
-      file = paste0("/Users/harrysmith/Documents/Carry_lab/misc/twoLimbSimulationStudy/Data_Out/Null/High_Corr_Data_Out_Null_", N.Bilateral.List[j], ".Rds")
+      file = paste0(getwd(), "/", N.Bilateral.List[j], ".RDS")
     )
     saveRDS(
       object = Error.Output, 
-      file = paste0("/Users/harrysmith/Documents/Carry_lab/misc/twoLimbSimulationStudy/Error_Out/Null/High_Corr_Error_Out_Null_", N.Bilateral.List[j], ".Rds")
+      file = paste0(getwd(), "/", N.Bilateral.List[j], ".RDS")
     )
   }
 }
@@ -433,12 +434,12 @@ for(j in 1:nrow(N.Bilateral.List)){
     # Save the results to files
     saveRDS(
       object = Simulation.Output.Data, 
-      file = paste0("/Users/harrysmith/Documents/Carry_lab/misc/twoLimbSimulationStudy/Data_Out/Alternative/High_Corr_Data_Out_Alternative_", N.Bilateral.List[j], ".Rds")
+      file = paste0(getwd(), "/", N.Bilateral.List[j], ".RDS")
     )
     
     saveRDS(
       object = Error.Output, 
-      file = paste0("/Users/harrysmith/Documents/Carry_lab/misc/twoLimbSimulationStudy/Error_Out/Alternative/High_Corr_Error_Out_Alternative_", N.Bilateral.List[j], ".Rds")
+      file = paste0(getwd(), "/", N.Bilateral.List[j], ".RDS")
     )
   }
 }

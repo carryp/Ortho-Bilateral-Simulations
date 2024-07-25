@@ -226,11 +226,11 @@ for(j in 1:nrow(N.Bilateral.List)){
     
     saveRDS(
       object = Simulation.Output.Data, 
-      file = paste0("RDS Files/Data Out/Null/Low_Corr_Data_Out_Null_", N.Bilateral.List[j],".Rds")
+      file = paste0(getwd(), "/", N.Bilateral.List[j], ".RDS")
       )
     saveRDS(
       object = Error.Output, 
-      file = paste0("RDS Files/Error Out/Null/Low_Corr_Error_Out_Null_", N.Bilateral.List[j],".Rds")
+      file = paste0(getwd(), "/", N.Bilateral.List[j], ".RDS")
       )
   }
 }
@@ -461,12 +461,12 @@ for(j in 1:nrow(N.Bilateral.List)){
     
     saveRDS(
       object = Simulation.Output.Data, 
-      file = paste0("RDS Files/Data Out/Alternative/Low_Corr_Data_Out_Alternative_", N.Bilateral.List[j],".Rds")
+      file = paste0(getwd(), "/", N.Bilateral.List[j], ".RDS")
     )
     
     saveRDS(
       object = Error.Output, 
-      file = paste0("RDS Files/Error Out/Alternative/Low_Corr_Error_Out_Alternative_", N.Bilateral.List[j],".Rds")
+      file = paste0(getwd(), "/", N.Bilateral.List[j], ".RDS")
     )
   }
 }
